@@ -29,7 +29,7 @@ export default function Card({ details, onAddItem, onRemoveItem }) {
           <a class="minus__btn btn" onClick={handleDecrement}><img width="15" height="15" src={minus} alt="minus" /></a>
         </div>
         :
-        <a class="product__btn btn" onClick={handleIncrement}>Add</a>
+        <a class="product__btn btn" onClick={handleIncrement}>Qo'shish</a>
       }
     </div>
   )
