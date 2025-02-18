@@ -39,7 +39,7 @@ export default function App() {
 
   useEffect(() => {
     telegram.ready();
-    telegram.MainButton.text = "Checkout";
+    telegram.MainButton.text = "Hisobga o'tish";
     cartItems.length > 0 ? telegram.MainButton.show() : telegram.MainButton.hide();
     // Attach the event listener for the main button click
     telegram.onEvent('mainButtonClicked', onSendData);
