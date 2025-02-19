@@ -23,7 +23,7 @@ export default function App() {
       return;
     }
 
-    fetch("https://pizzeria-server-srvk.onrender.com/web-data", {
+    fetch("http://localhost:8000/web-data", {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
