@@ -81,10 +81,10 @@ export function getData() {
       category:"ichimlik"
     },
     {
-      title: "Pepsi 1.5L",
-      price: 13000,
+      title: "Coffee",
+      price: 10000,
       Image:
-        "https://images.uzum.uz/cjjlggjk9fqacmkvb0bg/original.jpg",
+        "https://t4.ftcdn.net/jpg/01/76/51/73/360_F_176517375_TdfFVyrJahmr40ffqy1xBgUj9X07sVfB.jpg",
       id: 11,
       category:"ichimlik"
     },

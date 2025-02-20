@@ -39,7 +39,7 @@ export default function App() {
   }, [cartItems]);
   useEffect(() => {
     const handleScroll = (event) => {
-      if(window.pageYOffset>130){
+      if(window.pageYOffset>135){
         setSticky(true);
       }else{
         setSticky(false);
@@ -107,7 +107,7 @@ export default function App() {
         <a href="#desert" className='tag'>desertlar</a>  
       </div>
       <div className='container'>
-        <h2 className='category-title' id="asosiy">Asosiy</h2>
+        <h2 className={`category-title ${sticky?"m-5":""}`} id="asosiy">Asosiy</h2>
         <div className="product-container">
         {courses.filter(item => item.category === "asosiy").map((item,id) =>
           <Card id={id} details={item} onRemoveItem={onRemoveItem} onAddItem={onAddItem} />)}
