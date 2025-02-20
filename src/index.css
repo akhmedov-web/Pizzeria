@@ -3,14 +3,15 @@
   padding: 0;
   box-sizing: border-box;
 }
+html {
+  scroll-behavior: smooth;
+}
 
 .container{
   width: 100%;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  gap: 2.5rem;
-  padding: 2.5rem;
-  padding-bottom: 5rem;
+  grid-template-columns: 1fr;
+  padding: 2rem 2.5rem 5rem 2.5rem;
 }
 
 header{
@@ -43,6 +44,56 @@ a {
   text-decoration: none;
   color: inherit;
 }
+.tags-container {
+  display: none;  
+  width: 100vw;
+  overflow-x: auto; 
+  white-space: nowrap;
+  gap: 6px;
+  padding: 10px;
+  scrollbar-width: none; 
+  margin-top: 0.5rem;
+  background:#f0f0f0;
+}
+
+.sticky{
+  position: fixed;
+  z-index: 10;
+  top: 0;
+  margin-top: 0;
+}
+
+.tags-container::-webkit-scrollbar {
+  display: none; 
+}
+
+.tag {
+  background: #fff;
+  color: #1C1C1E;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 15px;
+  cursor: pointer;
+  flex-shrink: 0; /* Prevent items from shrinking */
+}
+
+.active_tag{
+  background: #2e8b57;
+  color:white;
+}
+
+.category-title{
+  margin-bottom: 1rem;
+  color:#1C1C1E;
+}
+
+.product-container{
+  margin-bottom: 2rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap:2rem;
+}
+
 .btn {
   display: inline-block;
   color: #fff;
@@ -172,6 +223,9 @@ a {
     grid-template-columns: 1fr 1fr;
     padding-bottom: 5rem;
   }
+  .tags-container {
+    display: flex;  
+  }
   .quantity {
     top: -15px;
     left: -15px;
@@ -202,8 +256,10 @@ a {
   .container{
     display: grid;
     grid-template-columns: 1fr;
-    padding: 20px;
-    padding-bottom: 5rem;
+    padding: 0.5rem 20px 5rem 20px;
+  }
+  .tags-container {
+    display: flex;  
   }
   .quantity {
     top: -15px;
@@ -215,6 +271,12 @@ a {
     bottom: -20px;
     right: 25px;
     padding: 1em 3em;
+  }
+  .product-container{
+    margin-bottom: 2.5rem;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
   }
   .product {
     position: relative;

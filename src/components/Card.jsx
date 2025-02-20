@@ -18,18 +18,18 @@ export default function Card({ details, onAddItem, onRemoveItem }) {
     minimumFractionDigits: 0,
 });
   return (
-    <div class="product">
+    <div className="product">
       {quantity > 0 ? <span class="quantity">{quantity}</span> : null}
-      <img class="product__image" src={details.Image} />
-      <h1 class="product__title">{details.title}</h1>
+      <img className="product__image" src={details.Image} />
+      <h1 className="product__title">{details.title}</h1>
       <span className='product__price'>{formattedPrice}</span>
-      {quantity > 0 ?
+      {quantity > 0 ? 
         <div className='quantityBtns'>
-          <a class="plus__btn btn" onClick={handleIncrement}><img width="15" height="15" src={plus} alt="plus" /></a>
-          <a class="minus__btn btn" onClick={handleDecrement}><img width="15" height="15" src={minus} alt="minus" /></a>
+          <a className="plus__btn btn" onClick={handleIncrement}><img width="15" height="15" src={plus} alt="plus" /></a>
+          <a className="minus__btn btn" onClick={handleDecrement}><img width="15" height="15" src={minus} alt="minus" /></a>
         </div>
         :
-        <a class="product__btn btn" onClick={handleIncrement}>Qo'shish</a>
+        <a className="product__btn btn" onClick={handleIncrement}>Qo'shish</a>
       }
     </div>
   )

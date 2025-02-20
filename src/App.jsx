@@ -8,6 +8,7 @@ import logo from "../public/logo.png"
 export default function App() {
   const courses = getData();
   const [cartItems, setCartItems] = useState([]);
+  const [sticky, setSticky]=useState(false)
 
   // Get Telegram WebApp object
   const telegram = window.Telegram.WebApp;
@@ -36,7 +37,21 @@ export default function App() {
         telegram.close(); // ✅ Close the web app after successful submission
       });
   }, [cartItems]);
+  useEffect(() => {
+    const handleScroll = (event) => {
+      if(window.pageYOffset>130){
+        setSticky(true);
+      }else{
+        setSticky(false);
+      }
+    };
 
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
   useEffect(() => {
     telegram.ready();
     telegram.MainButton.text = "Hisobga o'tish";
@@ -84,10 +99,42 @@ export default function App() {
   return (
     <>
       <header><img src={logo} alt="img" className='logo'/></header>
-      <div className='container'>
-        {courses.map(item =>
-          <Card details={item} onRemoveItem={onRemoveItem} onAddItem={onAddItem} />)}
+      <div className={`tags-container ${sticky?"sticky":""}`}>
+        <a href="#asosiy" className='tag active_tag'>asosiy</a>
+        <a href="#shashlik" className='tag' onClick={()=>{window.scrollTo(0, 2010)}}>shashliklar</a>
+        <a href="#salat" className='tag'>salatlar</a>
+        <a href="#ichimlik" className='tag'>ichimliklar</a>
+        <a href="#desert" className='tag'>desertlar</a>  
       </div>
+      <div className='container'>
+        <h2 className='category-title' id="asosiy">Asosiy</h2>
+        <div className="product-container">
+        {courses.filter(item => item.category === "asosiy").map((item,id) =>
+          <Card id={id} details={item} onRemoveItem={onRemoveItem} onAddItem={onAddItem} />)}
+        </div>
+        <h2 className='category-title' id="shashlik">Shashliklar</h2>
+        <div className="product-container">
+        {courses.filter(item => item.category === "shashlik").map((item,id) =>
+          <Card id={id} details={item} onRemoveItem={onRemoveItem} onAddItem={onAddItem} />)}
+        </div>
+        <h2 className='category-title' id="salat">Salatlar</h2>
+        <div className="product-container">
+        {courses.filter(item => item.category === "salat").map((item,id) =>
+          <Card id={id} details={item} onRemoveItem={onRemoveItem} onAddItem={onAddItem} />)}
+        </div>
+        <h2 className='category-title' id="ichimlik">Ichimliklar</h2>
+        <div className="product-container">
+        {courses.filter(item => item.category === "ichimlik").map((item,id) =>
+          <Card id={id} details={item} onRemoveItem={onRemoveItem} onAddItem={onAddItem} />)}
+        </div>
+        
+        <h2 className='category-title' id="desert">Desert</h2>
+        <div className="product-container">
+        {courses.filter(item => item.category === "desert").map((item,id) =>
+          <Card id={id} details={item} onRemoveItem={onRemoveItem} onAddItem={onAddItem} />)}
+          </div>
+        </div>
+      
       <div className='cart-btn'>
         <span style={{ marginRight: "5px" }}>Umumiy summa: <span className='pricee'> {totalPrice(cartItems)}</span></span> <img width="25" height="25" src="https://img.icons8.com/stickers/50/shopping-cart.png" alt="shopping-cart" />
       </div>
